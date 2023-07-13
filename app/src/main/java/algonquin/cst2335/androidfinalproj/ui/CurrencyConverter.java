@@ -48,6 +48,15 @@ public class CurrencyConverter extends AppCompatActivity {
         variableBinding.amountEnter.setText(amount);
         variableBinding.newCurrencyEnter.setText(newCurrency);
 
+
+        //onclick listener for viewing history
+        variableBinding.historyBtn.setOnClickListener(clk -> {
+
+
+
+
+        });
+
         //on click listener for converting
         variableBinding.convertBtn.setOnClickListener( clk ->{
 
