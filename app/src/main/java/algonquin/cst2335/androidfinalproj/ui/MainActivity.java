@@ -1,5 +1,6 @@
 package algonquin.cst2335.androidfinalproj.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,12 +17,23 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
+        //setting the view model
         model = new ViewModelProvider(this).get(MainViewModel.class);
 
+        //setting the variable binding
         variableBinding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(variableBinding.getRoot());
+
+        // Creating the intent setting
+        Intent currencyPage = new Intent(MainActivity.this, CurrencyConverter.class);
+
+
+        //onclick listener for the currency button
+        variableBinding.currencyBtn.setOnClickListener( clk -> {
+            //moving to currencyConverter page
+            startActivity(currencyPage);
+
+        });
 
     }
 }
