@@ -25,8 +25,10 @@
             android:name=".ui.CurrencyConverter"
             android:exported="false" />
         <activity
-            android:name=".ui.Results"
+            android:name=".ui.Result"
             android:exported="false" />
+        <activity android:name="algonquin.cst2335.androidfinalproj.ui.ResultsPage" />
+
     </application>
 
 </manifest>
