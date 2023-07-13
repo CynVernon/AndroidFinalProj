@@ -54,18 +54,17 @@ public class CurrencyConverter extends AppCompatActivity {
             //verifying the data entered
             if(verifyData() == true ){
                 //shared preferences, putting the strings there
-               /* SharedPreferences.Editor editor = pref.edit();
-                editor.putString("Currency", variableBinding.currencyEnter.getText().toString());
-                editor.putString("Amount", variableBinding.amountEnter.getText().toString());
-                editor.putString("NewCurrency", variableBinding.newCurrencyEnter.getText().toString());
+               SharedPreferences.Editor editor = pref.edit();
+               editor.putString("Currency", variableBinding.currencyEnter.getText().toString());
+               editor.putString("Amount", variableBinding.amountEnter.getText().toString());
+               editor.putString("NewCurrency", variableBinding.newCurrencyEnter.getText().toString());
 
                 editor.apply();
+
                // adding the shared prefs to the next page?
                resultsPage.putExtra("Currency",variableBinding.currencyEnter.getText().toString());
-                resultsPage.putExtra("Amount", variableBinding.amountEnter.getText().toString());
-                resultsPage.putExtra("NewCurrency", variableBinding.newCurrencyEnter.getText().toString());
-                */
-
+               resultsPage.putExtra("Amount", variableBinding.amountEnter.getText().toString());
+               resultsPage.putExtra("NewCurrency", variableBinding.newCurrencyEnter.getText().toString());
 
                 //going to resultsPage
                 startActivity(resultsPage);
