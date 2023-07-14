@@ -1,4 +1,4 @@
-package algonquin.cst2335.androidfinalproj.ui;
+package algonquin.cst2335.androidfinalproj.currencyconverter.ui;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;

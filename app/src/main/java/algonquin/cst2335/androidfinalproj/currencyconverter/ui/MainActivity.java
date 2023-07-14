@@ -1,4 +1,4 @@
-package algonquin.cst2335.androidfinalproj.ui;
+package algonquin.cst2335.androidfinalproj.currencyconverter.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,8 +6,7 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
-import algonquin.cst2335.androidfinalproj.R;
-import algonquin.cst2335.androidfinalproj.data.MainViewModel;
+import algonquin.cst2335.androidfinalproj.currencyconverter.data.MainViewModel;
 import algonquin.cst2335.androidfinalproj.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {

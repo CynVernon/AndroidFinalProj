@@ -1,4 +1,4 @@
-package algonquin.cst2335.androidfinalproj.ui;
+package algonquin.cst2335.androidfinalproj.currencyconverter.ui;
 
 import android.content.Context;
 import android.content.Intent;
@@ -20,12 +20,11 @@ import androidx.room.Room;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
 import algonquin.cst2335.androidfinalproj.R;
-import algonquin.cst2335.androidfinalproj.data.ResultsModel;
+import algonquin.cst2335.androidfinalproj.currencyconverter.data.ResultsModel;
 import algonquin.cst2335.androidfinalproj.databinding.PastResultsBinding;
 import algonquin.cst2335.androidfinalproj.databinding.ResultsPageBinding;
 
@@ -110,14 +109,21 @@ public class ResultsPage extends AppCompatActivity {
             });
         }
 
+        //onclick listener for the clear button
+        variableBinding.clearBtn.setOnClickListener(clk -> {
+
+
+        });
+
 
         //getting strings from shared prefs
-        String temp = "temporary string";
         String oldCurrency = fromPrevious.getStringExtra("Currency");
         String oldAmount = fromPrevious.getStringExtra("Amount");
+        String newAmount = fromPrevious.getStringExtra("NewAmount");
         String newCurrency = fromPrevious.getStringExtra("NewCurrency");
 
-        Result r = new Result(oldAmount, oldCurrency, temp, newCurrency);
+
+        Result r = new Result(oldAmount, oldCurrency, newAmount, newCurrency);
         results.add(r);
 
         //notifying dataset of added item
@@ -187,4 +193,4 @@ public class ResultsPage extends AppCompatActivity {
         } //end of RowHolder
     } //end of RowHolder class
 
-}
+} //end of class

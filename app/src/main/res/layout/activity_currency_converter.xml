@@ -9,7 +9,7 @@
         android:id="@+id/historyBtn"
         android:layout_width="125dp"
         android:layout_height="54dp"
-        android:layout_marginBottom="136dp"
+        android:layout_marginBottom="92dp"
         android:text="History"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -59,6 +59,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/resultView"
+        android:layout_width="255dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="404dp"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <EditText
         android:id="@+id/currencyEnter"
         android:layout_width="wrap_content"
@@ -90,7 +100,7 @@
         android:id="@+id/convertBtn"
         android:layout_width="125dp"
         android:layout_height="54dp"
-        android:layout_marginBottom="256dp"
+        android:layout_marginBottom="180dp"
         android:text="Convert"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

@@ -1,4 +1,4 @@
-package algonquin.cst2335.androidfinalproj.ui;
+package algonquin.cst2335.androidfinalproj.currencyconverter.ui;
 
 import android.content.Context;
 import android.content.Intent;
@@ -10,10 +10,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
 import java.util.ArrayList;
-import java.util.concurrent.Executor;
-import java.util.concurrent.Executors;
 
-import algonquin.cst2335.androidfinalproj.data.CurrencyConverterModel;
+import algonquin.cst2335.androidfinalproj.currencyconverter.data.CurrencyConverterModel;
 import algonquin.cst2335.androidfinalproj.databinding.ActivityCurrencyConverterBinding;
 
 
@@ -42,23 +40,25 @@ public class CurrencyConverter extends AppCompatActivity {
 
         String currency = pref.getString("Currency", "");
         String amount = pref.getString("Amount", "");
+        String newAmount = pref.getString("NewAmount", "");
         String newCurrency = pref.getString("NewCurrency", "");
 
         variableBinding.currencyEnter.setText(currency);
         variableBinding.amountEnter.setText(amount);
         variableBinding.newCurrencyEnter.setText(newCurrency);
 
+        boolean alreadyEntered = false;
 
         //onclick listener for viewing history
         variableBinding.historyBtn.setOnClickListener(clk -> {
-
-
-
 
         });
 
         //on click listener for converting
         variableBinding.convertBtn.setOnClickListener( clk ->{
+
+            //temporary holder for new amount
+            String temp = "new amount";
 
             //verifying the data entered
             if(verifyData() == true ){
@@ -66,26 +66,28 @@ public class CurrencyConverter extends AppCompatActivity {
                SharedPreferences.Editor editor = pref.edit();
                editor.putString("Currency", variableBinding.currencyEnter.getText().toString());
                editor.putString("Amount", variableBinding.amountEnter.getText().toString());
+               editor.putString("NewAmount", temp);
                editor.putString("NewCurrency", variableBinding.newCurrencyEnter.getText().toString());
 
-                editor.apply();
+               editor.apply();
 
                // adding the shared prefs to the next page?
                resultsPage.putExtra("Currency",variableBinding.currencyEnter.getText().toString());
                resultsPage.putExtra("Amount", variableBinding.amountEnter.getText().toString());
+               resultsPage.putExtra("NewAmount", temp);
                resultsPage.putExtra("NewCurrency", variableBinding.newCurrencyEnter.getText().toString());
 
-                //going to resultsPage
-                startActivity(resultsPage);
+                // get the updated newAmount and newCurrency values
+                String nA = pref.getString("NewAmount", "");
+                String nC = pref.getString("NewCurrency", "");
+
+               variableBinding.resultView.setText(nA +" "+ nC);
             }
             else {
 
             }
 
-
-
         });
-
 
 
     } //end of onCreate()
