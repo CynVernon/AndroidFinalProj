@@ -112,7 +112,6 @@ public class ResultsPage extends AppCompatActivity {
         //onclick listener for the clear button
         variableBinding.clearBtn.setOnClickListener(clk -> {
 
-
         });
 
 
@@ -122,18 +121,22 @@ public class ResultsPage extends AppCompatActivity {
         String newAmount = fromPrevious.getStringExtra("NewAmount");
         String newCurrency = fromPrevious.getStringExtra("NewCurrency");
 
-
         Result r = new Result(oldAmount, oldCurrency, newAmount, newCurrency);
-        results.add(r);
 
-        //notifying dataset of added item
-        myAdapter.notifyItemInserted(results.size() - 1);
+        //if any information is missing, it will not be added to the database. Also prevents
+        // usage of the history button without converting anything to not add empty
+        // entries into the database
+        if (oldCurrency != null || oldAmount != null || newAmount != null || newCurrency != null){
+            results.add(r);
+            //notifying dataset of added item
+            myAdapter.notifyItemInserted(results.size() - 1);
+            Executor thread = Executors.newSingleThreadExecutor();
+            thread.execute(() -> {
+                // adding message to the database
+                rDAO.insertResult(r);
+            });
 
-        Executor thread = Executors.newSingleThreadExecutor();
-        thread.execute(() -> {
-            // adding message to the database
-            rDAO.insertResult(r);
-        });
+        }
 
         variableBinding.recycleView.setLayoutManager(new GridLayoutManager(this, 1));
 

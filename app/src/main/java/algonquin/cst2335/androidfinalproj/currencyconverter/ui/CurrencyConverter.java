@@ -47,10 +47,10 @@ public class CurrencyConverter extends AppCompatActivity {
         variableBinding.amountEnter.setText(amount);
         variableBinding.newCurrencyEnter.setText(newCurrency);
 
-        boolean alreadyEntered = false;
-
         //onclick listener for viewing history
         variableBinding.historyBtn.setOnClickListener(clk -> {
+
+            startActivity(resultsPage);
 
         });
 
@@ -88,7 +88,6 @@ public class CurrencyConverter extends AppCompatActivity {
             }
 
         });
-
 
     } //end of onCreate()
 
