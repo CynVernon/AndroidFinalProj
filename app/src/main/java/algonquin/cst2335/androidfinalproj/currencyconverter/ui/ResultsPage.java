@@ -28,6 +28,8 @@ import algonquin.cst2335.androidfinalproj.currencyconverter.data.ResultsModel;
 import algonquin.cst2335.androidfinalproj.databinding.PastResultsBinding;
 import algonquin.cst2335.androidfinalproj.databinding.ResultsPageBinding;
 
+import algonquin.cst2335.androidfinalproj.currencyconverter.ui.CurrencyConverter;
+
 public class ResultsPage extends AppCompatActivity {
 
     private ResultsModel resultsModel;
@@ -66,7 +68,6 @@ public class ResultsPage extends AppCompatActivity {
 
                 PastResultsBinding resultsBinding = PastResultsBinding.inflate(getLayoutInflater());
                 return new MyRowHolder(resultsBinding.getRoot());
-
             }
 
             @Override
@@ -78,7 +79,6 @@ public class ResultsPage extends AppCompatActivity {
                 holder.oldCurrency.setText(result.getCurrency());
                 holder.newAmount.setText(result.getNewAmount());
                 holder.newCurrency.setText(result.getNewCurrency());
-
 
             } //end of onBindViewHolder
             @Override
@@ -104,7 +104,7 @@ public class ResultsPage extends AppCompatActivity {
             thread.execute(() ->
             {
                 results.addAll( rDAO.getAllResults() ); //Once you get the data from database
-
+                myAdapter.notifyDataSetChanged();
                 runOnUiThread( () ->  variableBinding.recycleView.setAdapter( myAdapter )); //You can then load the RecyclerView
             });
         }
@@ -114,19 +114,19 @@ public class ResultsPage extends AppCompatActivity {
 
         });
 
-
         //getting strings from shared prefs
         String oldCurrency = fromPrevious.getStringExtra("Currency");
         String oldAmount = fromPrevious.getStringExtra("Amount");
         String newAmount = fromPrevious.getStringExtra("NewAmount");
         String newCurrency = fromPrevious.getStringExtra("NewCurrency");
+        Boolean converted = fromPrevious.getBooleanExtra("Converted", false);
 
         Result r = new Result(oldAmount, oldCurrency, newAmount, newCurrency);
 
         //if any information is missing, it will not be added to the database. Also prevents
         // usage of the history button without converting anything to not add empty
         // entries into the database
-        if (oldCurrency != null || oldAmount != null || newAmount != null || newCurrency != null){
+        if (converted == true){
             results.add(r);
             //notifying dataset of added item
             myAdapter.notifyItemInserted(results.size() - 1);
@@ -135,7 +135,6 @@ public class ResultsPage extends AppCompatActivity {
                 // adding message to the database
                 rDAO.insertResult(r);
             });
-
         }
 
         variableBinding.recycleView.setLayoutManager(new GridLayoutManager(this, 1));

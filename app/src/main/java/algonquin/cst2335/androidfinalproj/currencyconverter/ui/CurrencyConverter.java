@@ -21,6 +21,8 @@ public class CurrencyConverter extends AppCompatActivity {
 
     ArrayList<Result> results = new ArrayList<>();
 
+    Boolean hasBeenConverted = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,19 +42,36 @@ public class CurrencyConverter extends AppCompatActivity {
 
         String currency = pref.getString("Currency", "");
         String amount = pref.getString("Amount", "");
-        String newAmount = pref.getString("NewAmount", "");
+       // String newAmount = pref.getString("NewAmount", "");
         String newCurrency = pref.getString("NewCurrency", "");
 
         variableBinding.currencyEnter.setText(currency);
         variableBinding.amountEnter.setText(amount);
         variableBinding.newCurrencyEnter.setText(newCurrency);
 
+
         //onclick listener for viewing history
         variableBinding.historyBtn.setOnClickListener(clk -> {
+            String temp = "new amount";
+            Boolean converted = false;
+
+            if(hasBeenConverted() == true) {
+
+                resultsPage.putExtra("Converted", true);
+
+                setConverted(false);
+            }
+            else if (hasBeenConverted() == false) {
+
+                resultsPage.putExtra("Converted", false);
+
+            }
 
             startActivity(resultsPage);
 
         });
+
+
 
         //on click listener for converting
         variableBinding.convertBtn.setOnClickListener( clk ->{
@@ -71,11 +90,13 @@ public class CurrencyConverter extends AppCompatActivity {
 
                editor.apply();
 
-               // adding the shared prefs to the next page?
-               resultsPage.putExtra("Currency",variableBinding.currencyEnter.getText().toString());
-               resultsPage.putExtra("Amount", variableBinding.amountEnter.getText().toString());
-               resultsPage.putExtra("NewAmount", temp);
-               resultsPage.putExtra("NewCurrency", variableBinding.newCurrencyEnter.getText().toString());
+                resultsPage.putExtra("Currency", currency);
+                resultsPage.putExtra("Amount", amount);
+                resultsPage.putExtra("NewAmount", temp);
+                resultsPage.putExtra("NewCurrency", variableBinding.newCurrencyEnter.getText().toString());
+
+               //thing
+                setConverted(true);
 
                 // get the updated newAmount and newCurrency values
                 String nA = pref.getString("NewAmount", "");
@@ -90,6 +111,14 @@ public class CurrencyConverter extends AppCompatActivity {
         });
 
     } //end of onCreate()
+
+    public void setConverted(Boolean answer){
+        this.hasBeenConverted = answer;
+    }
+
+    public boolean hasBeenConverted(){
+        return hasBeenConverted;
+    };
 
     public boolean verifyData(){
 
