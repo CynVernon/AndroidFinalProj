@@ -24,6 +24,16 @@
             </intent-filter>
         </activity>
         <activity
+            android:name="algonquin.cst2335.androidfinalproj.triviadatabase.QuizActivity"
+            android:exported="false">
+        </activity>
+        <activity
+            android:name="algonquin.cst2335.androidfinalproj.triviadatabase.ScoreActivity"
+            android:exported="false"/>
+        <activity
+            android:name=".triviadatabase.WelcomeActivity"
+            android:exported="false"/>
+        <activity
             android:name=".currencyconverter.ui.CurrencyConverter"
             android:exported="false" />
         <activity
