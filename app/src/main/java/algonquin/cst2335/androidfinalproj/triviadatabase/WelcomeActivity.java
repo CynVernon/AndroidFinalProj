@@ -1,6 +1,5 @@
 package algonquin.cst2335.androidfinalproj.triviadatabase;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -19,7 +18,6 @@ public class WelcomeActivity extends AppCompatActivity {
     private Button startQuizButton;
     private SharedPreferences sharedPreferences;
 
-    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,13 +28,17 @@ public class WelcomeActivity extends AppCompatActivity {
         startQuizButton = findViewById(R.id.startQuizButton);
         sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
 
+        // Retrieve the saved username
+        String savedUsername = sharedPreferences.getString("username", "");
+        usernameEditText.setText(savedUsername);
+
         startQuizButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String username = usernameEditText.getText().toString();
                 int numQuestions = Integer.parseInt(numQuestionsEditText.getText().toString());
 
-                // Save username using SharedPreferences
+                // Save the username using SharedPreferences
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.putString("username", username);
                 editor.apply();
