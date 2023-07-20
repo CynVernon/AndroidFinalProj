@@ -17,35 +17,22 @@
         <activity
             android:name="algonquin.cst2335.androidfinalproj.mainactivity.MainActivity"
             android:exported="true">
-
-        </activity>
-        <activity
-            android:name="algonquin.cst2335.androidfinalproj.triviadatabase.QuizActivity"
-            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-
             </intent-filter>
-    </activity>
-        <activity
-            android:name="algonquin.cst2335.androidfinalproj.triviadatabase.ScoreActivity"
-            android:exported="true"/>
-        <activity
-            android:name=".triviadatabase.WelcomeActivity"
-            android:exported="true"/>
+
         </activity>
         <activity
             android:name="algonquin.cst2335.androidfinalproj.triviadatabase.QuizActivity"
-            android:exported="false">
-        </activity>
+            android:exported="true"/>
         <activity
             android:name="algonquin.cst2335.androidfinalproj.triviadatabase.ScoreActivity"
-            android:exported="false"/>
+            android:exported="true"/>
         <activity
             android:name=".triviadatabase.WelcomeActivity"
-            android:exported="false"/>
+            android:exported="true"/>
         <activity
             android:name=".currencyconverter.ui.CurrencyConverter"
             android:exported="false" />

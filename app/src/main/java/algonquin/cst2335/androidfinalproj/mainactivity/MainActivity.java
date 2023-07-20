@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import algonquin.cst2335.androidfinalproj.currencyconverter.ui.CurrencyConverter;
 import algonquin.cst2335.androidfinalproj.databinding.ActivityMainBinding;
+import algonquin.cst2335.androidfinalproj.triviadatabase.WelcomeActivity;
 
 public class MainActivity extends AppCompatActivity {
     private MainViewModel model;
@@ -25,14 +26,18 @@ public class MainActivity extends AppCompatActivity {
 
         // Creating the intent setting
         Intent currencyPage = new Intent(MainActivity.this, CurrencyConverter.class);
+        Intent triviaPage = new Intent(MainActivity.this, WelcomeActivity.class);
 
 
         //onclick listener for the currency button
         variableBinding.currencyBtn.setOnClickListener( clk -> {
             //moving to currencyConverter page
             startActivity(currencyPage);
-
         });
 
+        //onclick listener for the trivia database question
+        variableBinding.triviaBtn.setOnClickListener(clk -> {
+            startActivity(triviaPage);
+        });
     }
 }

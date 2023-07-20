@@ -1,11 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <item name="editTextName" type="id">username</item>
-    <item name="textViewWelcome" type="id">welcome</item>
-    <item name="spinnerNumQuestions" type="id">1</item>
-    <item name="buttonSubmit" type="id">Submit!</item>
-    <item name="buttonStartQuiz" type="id">Start!</item>
-    <item name="recyclerViewScores" type="id">TopScores</item>
-    <item name="editTextNumQuestions" type="id">textNumQuestions</item>
-    <item name="textViewTitle" type="id">textViewTitle</item>
+
 </resources>
