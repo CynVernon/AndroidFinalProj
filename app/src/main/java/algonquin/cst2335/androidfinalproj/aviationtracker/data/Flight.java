@@ -2,9 +2,14 @@ package algonquin.cst2335.androidfinalproj.aviationtracker.data;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.PrimaryKey;
 
 @Entity
 public class Flight {
+    @PrimaryKey
+    @ColumnInfo(name = "Flight No.") //TODO: Will I even use the primary key?
+    protected int primary;
+
     @ColumnInfo(name = "Destination")
     protected String destination;
 
