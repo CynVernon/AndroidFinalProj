@@ -8,35 +8,37 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 
 import algonquin.cst2335.androidfinalproj.R;
+import algonquin.cst2335.androidfinalproj.databinding.ActivityWelcomeBinding;
 
 public class WelcomeActivity extends AppCompatActivity {
 
-    private EditText usernameEditText;
-    private EditText numQuestionsEditText;
-    private Button startQuizButton;
+   private ActivityWelcomeBinding binding;
+
+   private WelcomeModel model;
     private SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_welcome);
+        model = new ViewModelProvider(this).get(WelcomeModel.class);
 
-        usernameEditText = findViewById(R.id.usernameEditText);
-        numQuestionsEditText = findViewById(R.id.numQuestionsEditText);
-        startQuizButton = findViewById(R.id.startQuizButton);
+        binding = ActivityWelcomeBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+
         sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
 
         // Retrieve the saved username
         String savedUsername = sharedPreferences.getString("username", "");
-        usernameEditText.setText(savedUsername);
+        binding.usernameEditText.setText(savedUsername);
 
-        startQuizButton.setOnClickListener(new View.OnClickListener() {
+        binding.startQuizButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String username = usernameEditText.getText().toString();
-                int numQuestions = Integer.parseInt(numQuestionsEditText.getText().toString());
+                String username = binding.usernameEditText.getText().toString();
+                int numQuestions = Integer.parseInt(binding.numQuestionsEditText.getText().toString());
 
                 // Save the username using SharedPreferences
                 SharedPreferences.Editor editor = sharedPreferences.edit();

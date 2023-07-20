@@ -7,17 +7,21 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModel;
+import androidx.lifecycle.ViewModelProvider;
 
 import algonquin.cst2335.androidfinalproj.R;
+import algonquin.cst2335.androidfinalproj.databinding.ActivityQuizBinding;
 
 public class QuizActivity extends AppCompatActivity {
 
-    private TextView questionTextView;
-    private Button nextButton;
-    private int currentQuestionIndex = 0;
-    private int numQuestions;
+private QuizActivityModel model;
 
-    private String[] questions = {
+private ActivityQuizBinding binding;
+private int currentQuestionIndex = 0;
+private int numQuestions;
+
+private String[] questions = {
             "Question 1",
             "Question 2"
             // must be adapted to retrieve from database
@@ -26,15 +30,17 @@ public class QuizActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_quiz);
+        model = new ViewModelProvider(this).get(QuizActivityModel.class);
 
-        questionTextView = findViewById(R.id.questionTextView);
-        nextButton = findViewById(R.id.nextButton);
+        binding = ActivityQuizBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+
+
         numQuestions = getIntent().getIntExtra("numQuestions", 0);
 
         updateQuestion();
 
-        nextButton.setOnClickListener(new View.OnClickListener() {
+        binding.nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 currentQuestionIndex++;
@@ -48,7 +54,7 @@ public class QuizActivity extends AppCompatActivity {
     }
 
     private void updateQuestion() {
-        questionTextView.setText(questions[currentQuestionIndex]);
+        binding.questionTextView.setText(questions[currentQuestionIndex]);
     }
 
     private void finishQuiz() {

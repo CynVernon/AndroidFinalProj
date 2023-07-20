@@ -5,10 +5,16 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 
-import algonquin.cst2335.androidfinalproj.R;
+
+import algonquin.cst2335.androidfinalproj.databinding.ActivityScoreBinding;
 
 public class ScoreActivity extends AppCompatActivity {
+
+    private ActivityScoreBinding binding;
+
+    private ScoreModel model;
 
     private TextView scoreTextView;
 
@@ -16,11 +22,13 @@ public class ScoreActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_score);
+        model = new ViewModelProvider(this).get(ScoreModel.class);
 
-        scoreTextView = findViewById(R.id.scoreTextView);
+        binding = ActivityScoreBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+
         int score = getIntent().getIntExtra("score", 0);
-        scoreTextView.setText("Score: " + score);
-        scoreTextView.setText("Score: 100"); // Placeholder for testing
+        binding.scoreTextView.setText("Score: " + score);
+        binding.scoreTextView.setText("Score: 100"); // Placeholder for testing
     }
 }
