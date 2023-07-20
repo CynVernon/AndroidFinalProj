@@ -6,6 +6,7 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
+import algonquin.cst2335.androidfinalproj.aviationtracker.AviationActivity;
 import algonquin.cst2335.androidfinalproj.currencyconverter.ui.CurrencyConverter;
 import algonquin.cst2335.androidfinalproj.databinding.ActivityMainBinding;
 import algonquin.cst2335.androidfinalproj.triviadatabase.WelcomeActivity;
@@ -27,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
         // Creating the intent setting
         Intent currencyPage = new Intent(MainActivity.this, CurrencyConverter.class);
         Intent triviaPage = new Intent(MainActivity.this, WelcomeActivity.class);
-
+        Intent aviationPage = new Intent(MainActivity.this, AviationActivity.class);
 
         //onclick listener for the currency button
         variableBinding.currencyBtn.setOnClickListener( clk -> {
@@ -38,6 +39,12 @@ public class MainActivity extends AppCompatActivity {
         //onclick listener for the trivia database question
         variableBinding.triviaBtn.setOnClickListener(clk -> {
             startActivity(triviaPage);
+        });
+
+        //onclick listener for the bear images button
+        variableBinding.aviationBtn.setOnClickListener(clk -> {
+            startActivity(aviationPage);
+
         });
     }
 }
