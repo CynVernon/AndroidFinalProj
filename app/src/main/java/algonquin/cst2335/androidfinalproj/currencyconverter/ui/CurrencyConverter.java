@@ -52,9 +52,6 @@ public class CurrencyConverter extends AppCompatActivity {
 
         //onclick listener for viewing history
         variableBinding.historyBtn.setOnClickListener(clk -> {
-            String temp = "new amount";
-            Boolean converted = false;
-
             if(hasBeenConverted() == true) {
 
                 resultsPage.putExtra("Converted", true);
@@ -82,16 +79,15 @@ public class CurrencyConverter extends AppCompatActivity {
             //verifying the data entered
             if(verifyData() == true ){
                 //shared preferences, putting the strings there
-               SharedPreferences.Editor editor = pref.edit();
-               editor.putString("Currency", variableBinding.currencyEnter.getText().toString());
-               editor.putString("Amount", variableBinding.amountEnter.getText().toString());
-               editor.putString("NewAmount", temp);
-               editor.putString("NewCurrency", variableBinding.newCurrencyEnter.getText().toString());
-
+                SharedPreferences.Editor editor = pref.edit();
+                editor.putString("Currency", variableBinding.currencyEnter.getText().toString());
+                editor.putString("Amount", variableBinding.amountEnter.getText().toString());
+                editor.putString("NewAmount", temp);
+                editor.putString("NewCurrency", variableBinding.newCurrencyEnter.getText().toString());
                editor.apply();
 
-                resultsPage.putExtra("Currency", currency);
-                resultsPage.putExtra("Amount", amount);
+                resultsPage.putExtra("Currency", variableBinding.currencyEnter.getText().toString());
+                resultsPage.putExtra("Amount", variableBinding.amountEnter.getText().toString());
                 resultsPage.putExtra("NewAmount", temp);
                 resultsPage.putExtra("NewCurrency", variableBinding.newCurrencyEnter.getText().toString());
 
