@@ -9,12 +9,7 @@ import java.util.List;
 
 @Dao
 public interface FlightDAO {
-    @Insert
-    long insertFlight(Flight f); //TODO: Do I need to insert a flight?
 
-    @Query("SELECT * FROM flight")
+    @Query("SELECT * FROM flight") //TODO add "WHERE airport = XXX" or whatever
     List<Flight> getAllFlights();
-
-    @Delete
-    void deleteFlight(Flight f); //TODO: Do I need to delete flights?
 }
