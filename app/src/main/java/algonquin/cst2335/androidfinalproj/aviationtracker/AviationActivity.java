@@ -38,7 +38,12 @@ public class AviationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         model = new ViewModelProvider(this).get(AviationModel.class);
 
+        //code for making the binding
+        binding = ActivityAviationBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+
         //Code for shared preferences
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this); //TODO: what is the non-depreciated code?
         EditText editTextAirportCode = binding.editText;
         String previousAirportCode = sharedPreferences.getString("airport_code", "");
         editTextAirportCode.setText(previousAirportCode);
@@ -47,9 +52,6 @@ public class AviationActivity extends AppCompatActivity {
         //https://api.aviationstack.com/v1/flights?access_key=ef636c3084596897297efaffc637c25e&dep_iata=YOW
         db = Room.databaseBuilder(getApplicationContext(), FlightDatabase.class, "database-name").build();
 
-        //code for making the binding
-        binding = ActivityAviationBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
 
         //code for the search button
         binding.search.setOnClickListener(new View.OnClickListener() {
