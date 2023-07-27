@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/curr_conv"
+        android:icon="@drawable/currency"
+        android:title="@string/currency_converter"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/triv_time"
+        android:icon="@drawable/trivia"
+        android:title="@string/trivia_time"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/bear_imag"
+        android:icon="@drawable/bear"
+        android:title="@string/bear_images"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/avia_trac"
+        android:icon="@drawable/airplane"
+        android:title="@string/aviation_tracker"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/action_help"
+        android:icon="@drawable/question_mark"
+        android:title="@string/help"
+        app:showAsAction="always" />
+</menu>
