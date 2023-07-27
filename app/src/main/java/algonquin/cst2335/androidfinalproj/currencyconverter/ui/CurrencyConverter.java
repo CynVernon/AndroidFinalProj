@@ -7,17 +7,26 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
+
+import com.android.volley.RequestQueue;
 
 import java.util.ArrayList;
 
+import algonquin.cst2335.androidfinalproj.R;
 import algonquin.cst2335.androidfinalproj.currencyconverter.data.CurrencyConverterModel;
+import algonquin.cst2335.androidfinalproj.currencyconverter.data.ResultDetailsModel;
 import algonquin.cst2335.androidfinalproj.databinding.ActivityCurrencyConverterBinding;
+import algonquin.cst2335.androidfinalproj.currencyconverter.ui.ResultDetailsFragment;
 
 
 public class CurrencyConverter extends AppCompatActivity {
     private CurrencyConverterModel model;
     private ActivityCurrencyConverterBinding variableBinding;
+
+    protected RequestQueue queue = null;
 
     ArrayList<Result> results = new ArrayList<>();
 
@@ -42,7 +51,7 @@ public class CurrencyConverter extends AppCompatActivity {
 
         String currency = pref.getString("Currency", "");
         String amount = pref.getString("Amount", "");
-       // String newAmount = pref.getString("NewAmount", "");
+        String newAmount = pref.getString("NewAmount", "");
         String newCurrency = pref.getString("NewCurrency", "");
 
         variableBinding.currencyEnter.setText(currency);
@@ -68,8 +77,6 @@ public class CurrencyConverter extends AppCompatActivity {
 
         });
 
-
-
         //on click listener for converting
         variableBinding.convertBtn.setOnClickListener( clk ->{
 
@@ -94,11 +101,17 @@ public class CurrencyConverter extends AppCompatActivity {
                //thing
                 setConverted(true);
 
-                // get the updated newAmount and newCurrency values
-                String nA = pref.getString("NewAmount", "");
-                String nC = pref.getString("NewCurrency", "");
+                //viewmodel for fragment?
+                ResultDetailsModel fragment = new ResultDetailsModel();
+                //fragment.setViewModel(model);
 
-               variableBinding.resultView.setText(nA +" "+ nC);
+                //loading the fragment
+                ResultDetailsFragment resultFragment = new ResultDetailsFragment();
+                FragmentManager fMgr = getSupportFragmentManager();
+                FragmentTransaction tx = fMgr.beginTransaction();
+                tx.replace(R.id.fragmentLocation, resultFragment);
+                tx.commit();
+                tx.addToBackStack("");
             }
             else {
 
