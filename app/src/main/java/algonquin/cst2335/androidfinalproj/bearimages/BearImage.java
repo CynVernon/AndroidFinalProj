@@ -1,4 +1,4 @@
-// BearImage.java
+package algonquin.cst2335.androidfinalproj.bearimages;// BearImage.java
 
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;

@@ -1,4 +1,4 @@
-// SavedImagesActivity.java
+package algonquin.cst2335.androidfinalproj.bearimages;// SavedImagesActivity.java
 
 import android.os.Bundle;
 
@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
+import algonquin.cst2335.androidfinalproj.R;
 import algonquin.cst2335.androidfinalproj.bearimages.db.BearImage;
 import algonquin.cst2335.androidfinalproj.bearimages.db.BearImageDatabase;
 

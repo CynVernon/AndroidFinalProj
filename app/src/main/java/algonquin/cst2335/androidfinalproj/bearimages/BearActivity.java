@@ -1,4 +1,4 @@
-// BearActivity.java
+package algonquin.cst2335.androidfinalproj.bearimages;// BearActivity.java
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -8,6 +8,7 @@ import android.widget.EditText;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
+import algonquin.cst2335.androidfinalproj.R;
 import algonquin.cst2335.androidfinalproj.bearimages.db.BearImageDatabase;
 import algonquin.cst2335.androidfinalproj.databinding.BearActivityBinding;
 

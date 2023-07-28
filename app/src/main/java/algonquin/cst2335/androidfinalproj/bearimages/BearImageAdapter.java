@@ -1,4 +1,4 @@
-// BearImageAdapter.java
+package algonquin.cst2335.androidfinalproj.bearimages;// BearImageAdapter.java
 
 import android.view.LayoutInflater;
 import android.view.View;
