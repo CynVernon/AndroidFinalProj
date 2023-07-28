@@ -14,7 +14,7 @@
         android:theme="@style/Theme.AndroidFinalProj"
         tools:targetApi="31">
         <activity
-            android:name="algonquin.cst2335.androidfinalproj.mainactivity.MainActivity"
+            android:name="algonquin.cst2335.androidfinalproj.values.mainactivity.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
