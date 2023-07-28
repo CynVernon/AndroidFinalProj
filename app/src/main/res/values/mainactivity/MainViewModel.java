@@ -1,4 +1,4 @@
-package algonquin.cst2335.androidfinalproj.mainactivity;
+package values.mainactivity;
 
 import androidx.lifecycle.ViewModel;
 
