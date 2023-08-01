@@ -1,8 +1,22 @@
 <resources>
     <string name="app_name">AndroidFinalProj</string>
+    <string name="welcome">Welcome!</string>
+    <string name="ask">What would you like to do today?</string>
     <string name="currency_converter">Currency Converter</string>
     <string name="trivia_time">Trivia Time</string>
     <string name="bear_images">Bear Images</string>
     <string name="aviation_tracker">Aviation Tracker</string>
     <string name="help">Help</string>
+    <string name="history">History</string>
+
+    <string name="c_instructions">Welcome to the currency converter. To use this app, enter an amount to convert. Enter the currency you are converting from. Next, enter the currency you want to convert into. Hit the convert button to get your result. Press the history button to view your past results. </string>
+    <string name="enter_amount">Amount:</string>
+    <string name="old_c">Currency:</string>
+    <string name="new_c">New Currency:</string>
+    <string name="enter_here">Enter here..</string>
+    <string name="convert">Convert</string>
+
+
+
+
 </resources>

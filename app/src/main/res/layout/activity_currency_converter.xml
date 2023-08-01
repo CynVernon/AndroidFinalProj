@@ -18,12 +18,20 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                app:title="@string/currency_converter"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:layout_editor_absoluteX="0dp" />
+
             <Button
                 android:id="@+id/historyBtn"
                 android:layout_width="125dp"
                 android:layout_height="54dp"
-                android:layout_marginBottom="92dp"
-                android:text="History"
+                android:layout_marginBottom="44dp"
+                android:text="@string/history"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
@@ -32,10 +40,10 @@
                 android:id="@+id/topLabel"
                 android:layout_width="154dp"
                 android:layout_height="40dp"
-                android:layout_marginTop="24dp"
-                android:text="CURRENCY CONVERTER"
+                android:layout_marginTop="80dp"
+                android:text="@string/currency_converter"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintHorizontal_bias="0.501"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -44,7 +52,7 @@
                 android:layout_width="113dp"
                 android:layout_height="31dp"
                 android:layout_marginTop="144dp"
-                android:text="Enter Amount:"
+                android:text="@string/enter_amount"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.053"
                 app:layout_constraintStart_toStartOf="parent"
@@ -55,7 +63,7 @@
                 android:layout_width="113dp"
                 android:layout_height="31dp"
                 android:layout_marginTop="224dp"
-                android:text="Currency:"
+                android:text="@string/old_c"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.053"
                 app:layout_constraintStart_toStartOf="parent"
@@ -66,7 +74,7 @@
                 android:layout_width="113dp"
                 android:layout_height="31dp"
                 android:layout_marginTop="300dp"
-                android:text="New Currency:"
+                android:text="@string/new_c"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.053"
                 app:layout_constraintStart_toStartOf="parent"
@@ -79,7 +87,7 @@
                 android:layout_marginTop="212dp"
                 android:layout_marginEnd="32dp"
                 android:ems="10"
-                android:hint="enter currency..."
+                android:hint="@string/enter_here"
                 android:inputType="text"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
@@ -92,7 +100,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="288dp"
                 android:ems="10"
-                android:hint="enter new currency here..."
+                android:hint="@string/enter_here"
                 android:inputType="text"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.589"
@@ -103,8 +111,8 @@
                 android:id="@+id/convertBtn"
                 android:layout_width="125dp"
                 android:layout_height="54dp"
-                android:layout_marginBottom="212dp"
-                android:text="Convert"
+                android:layout_marginBottom="120dp"
+                android:text="@string/convert"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
@@ -116,10 +124,22 @@
                 android:layout_marginTop="144dp"
                 android:layout_marginEnd="32dp"
                 android:ems="10"
-                android:hint="enter amount... 00.00"
+                android:hint="@string/enter_here"
                 android:inputType="numberDecimal"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/result"
+                android:layout_width="162dp"
+                android:layout_height="78dp"
+                android:layout_marginBottom="200dp"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.485"
+                app:layout_constraintStart_toStartOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </FrameLayout>
 </LinearLayout>

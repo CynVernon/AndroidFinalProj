@@ -13,7 +13,7 @@
         android:layout_marginStart="240dp"
         android:layout_marginTop="20dp"
         android:contentDescription=" "
-        android:text="Aviation Tracker"
+        android:text="@string/aviation_tracker"
         android:textAlignment="center"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/aviationBtn" />
@@ -23,7 +23,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="44dp"
-            android:text="Welcome!"
+            android:text="@string/welcome"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
@@ -34,7 +34,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="36dp"
-            android:text="What would you like to do today?"
+            android:text="@string/ask"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.504"
             app:layout_constraintStart_toStartOf="parent"
@@ -88,7 +88,7 @@
         android:layout_height="29dp"
         android:layout_marginStart="48dp"
         android:layout_marginTop="16dp"
-        android:text="Currency Converter"
+        android:text="@string/currency_converter"
         android:textAlignment="center"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/currencyBtn" />
@@ -100,7 +100,7 @@
         android:layout_marginStart="240dp"
         android:layout_marginTop="16dp"
         android:contentDescription=" "
-        android:text="Trivia Time"
+        android:text="@string/trivia_time"
         android:textAlignment="center"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/triviaBtn" />
@@ -112,7 +112,7 @@
         android:layout_marginStart="52dp"
         android:layout_marginTop="20dp"
         android:contentDescription=" "
-        android:text="Bear Images"
+        android:text="@string/bear_images"
         android:textAlignment="center"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bearBtn" />
