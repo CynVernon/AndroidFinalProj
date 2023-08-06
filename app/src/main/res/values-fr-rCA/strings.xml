@@ -1,9 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">AndroidFinalProj</string>
+    <string name="welcome">Bienvenue!</string>
+    <string name="ask">Qu\'aimeriez-vous faire aujourd\'hui?</string>
     <string name="currency_converter">Échange de l\'argent</string>
     <string name="trivia_time">Jeu-questionnaire</string>
     <string name="bear_images">Images d\'ours</string>
     <string name="aviation_tracker">Traqueur d\'aviation</string>
     <string name="help">Aide</string>
+    <string name="history">Récit</string>
+
+    <string name="c_instructions">Bienvenue dans le convertisseur de devises. Pour utiliser cette application, entrez un montant à convertir. Saisissez la devise à partir de laquelle vous effectuez la conversion. Ensuite, entrez la devise dans laquelle vous souhaitez effectuer la conversion. Appuyez sur le bouton de conversion pour obtenir votre résultat. Appuyez sur le bouton Historique pour afficher vos résultats passés.</string>
+    <string name="enter_amount">Montant:</string>
+    <string name="old_c">Devise:</string>
+    <string name="new_c">Nouvelle devise:</string>
+    <string name="enter_here">Entrez ici..</string>
+    <string name="convert">Échange</string>
+    <string name="title">Mode D\'Emplois:</string>
+    <string name="understand">Ouis, je comprend</string>
+    <string name="delete">Enlever</string>
+    <string name="newest">Nouveau</string>
+
+
+
+
 </resources>
