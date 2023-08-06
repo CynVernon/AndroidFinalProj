@@ -11,6 +11,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -28,8 +30,11 @@ import algonquin.cst2335.androidfinalproj.currencyconverter.data.ResultsModel;
 import algonquin.cst2335.androidfinalproj.databinding.PastResultsBinding;
 import algonquin.cst2335.androidfinalproj.databinding.ResultsPageBinding;
 
-import algonquin.cst2335.androidfinalproj.currencyconverter.ui.CurrencyConverter;
 
+/**
+ * The ResultsPage class that displays the previous converted amounts by the User and what the
+ * currencies were. It loads onto a recycler view after accessing the objects from the database.
+ */
 public class ResultsPage extends AppCompatActivity {
 
     private ResultsModel resultsModel;
@@ -110,7 +115,46 @@ public class ResultsPage extends AppCompatActivity {
         }
 
         //onclick listener for the clear button
-        variableBinding.clearBtn.setOnClickListener(clk -> {
+        variableBinding.deleteBtn.setOnClickListener(clk -> {
+
+            TextView oldAmount = findViewById(R.id.oldAmount);
+
+            Result result = resultsModel.selectedResult.getValue();
+
+            //ask if you want to delete it first
+            AlertDialog.Builder builder = new AlertDialog.Builder( ResultsPage.this );
+
+            // Deleting the message
+            int position = results.indexOf(result);
+
+            builder.setMessage( "Do you want to delete this entry?")
+                    .setTitle("Confirmation:")
+                    .setNegativeButton("No", (dialog, cl) ->{})
+                    .setPositiveButton("Yes", (dialog, cl) -> {
+                        // Deleting the message
+                        Result r = results.get(position);
+
+
+                        Executor thread = Executors.newSingleThreadExecutor();
+                        thread.execute(() -> {
+                            // deleting message to the database
+                            rDAO.deleteMessage(r);
+                        });
+
+                        Result removedResult = results.get(position);
+
+                        results.remove(position);
+                        myAdapter.notifyItemRemoved(position);
+
+                        resultsModel.selectedResult.postValue(null);
+
+                        Snackbar.make(oldAmount,"You deleted message #" + position, Snackbar.LENGTH_LONG)
+                                .setAction("Undo", click -> {
+                                    results.add(position, removedResult);
+                                    myAdapter.notifyItemInserted(position); // Notify adapter with correct position
+                                })
+                                .show();
+                    }).create().show();
 
         });
 
@@ -139,6 +183,20 @@ public class ResultsPage extends AppCompatActivity {
 
         variableBinding.recycleView.setLayoutManager(new GridLayoutManager(this, 1));
 
+
+        resultsModel.selectedResult.observe(this, (newValue) -> {
+
+            ResultsDetailsFragment fragment = new ResultsDetailsFragment(newValue);
+
+            if(newValue != null) {
+                FragmentManager fMgr = getSupportFragmentManager();
+                FragmentTransaction tx = fMgr.beginTransaction();
+                tx.replace(R.id.fragmentLocation, fragment);
+                tx.commit();
+                tx.addToBackStack("");
+            }
+        });
+
     } //end of onCreate()
     class MyRowHolder extends RecyclerView.ViewHolder {
         TextView oldAmount;
@@ -151,41 +209,15 @@ public class ResultsPage extends AppCompatActivity {
 
             //onclick listener for itemView
             itemView.setOnClickListener( clk -> {
-                //get the adapter position to know which row to delete
+
                 int position = getAbsoluteAdapterPosition();
+                Result selected = results.get(position);
 
-                //ask if you want to delete it first
-                AlertDialog.Builder builder = new AlertDialog.Builder( ResultsPage.this );
+                resultsModel.selectedResult.postValue(selected);
 
-                //opening the database
-                ResultsDatabase db = Room.databaseBuilder(getApplicationContext(), ResultsDatabase.class, "database-name").build();
-                ResultDAO rDAO = db.rDAO();
+                //get the adapter position to know which row to delete
+               // int position = getAbsoluteAdapterPosition();
 
-                builder.setMessage( "Do you want to delete this entry?")
-                        .setTitle("Confirmation:")
-                        .setNegativeButton("No", (dialog, cl) ->{})
-                        .setPositiveButton("Yes", (dialog, cl) -> {
-                            // Deleting the message
-                            Result r = results.get(position);
-
-                            Executor thread = Executors.newSingleThreadExecutor();
-                            thread.execute(() -> {
-                                // deleting message to the database
-                                rDAO.deleteMessage(r);
-                            });
-
-                            Result removedResult = results.get(position);
-
-                            results.remove(position);
-                            myAdapter.notifyItemRemoved(position);
-
-                            Snackbar.make(oldAmount, "You deleted message #" + position, Snackbar.LENGTH_LONG)
-                                    .setAction("Undo", click -> {
-                                        results.add(position, removedResult);
-                                        myAdapter.notifyItemInserted(position); // Notify adapter with correct position
-                                    })
-                                    .show();
-                        }).show();
             });
 
             oldAmount = itemView.findViewById(R.id.oldAmount);

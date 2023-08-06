@@ -7,13 +7,13 @@
     android:background="@color/white">
 
     <TextView
-        android:id="@+id/c_instuctions"
-        android:layout_width="377dp"
-        android:layout_height="275dp"
+        android:id="@+id/result"
+        android:layout_width="237dp"
+        android:layout_height="117dp"
         android:layout_marginTop="360dp"
-        android:text="@string/c_instructions"
+        android:text="null"
         android:textAlignment="center"
-        android:textSize="22sp"
+        android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.529"
         app:layout_constraintStart_toStartOf="parent"
@@ -37,7 +37,21 @@
         android:layout_height="201dp"
         android:layout_marginTop="40dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/currency" />
+
+    <TextView
+        android:id="@+id/oldInfo"
+        android:layout_width="156dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="484dp"
+        android:text="null"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

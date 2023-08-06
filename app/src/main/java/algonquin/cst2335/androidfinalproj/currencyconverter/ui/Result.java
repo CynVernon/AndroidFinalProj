@@ -34,19 +34,31 @@ public class Result {
     }
     public Result(){};
 
-    //getter for amount
+    /**
+     * The get method that returns the amount.
+     * @return The amount converted
+     */
     public String getAmount(){
         return amount;
     }
 
-    //getter for currency
+    /**
+     * The get method that returns the old currency.
+     * @return The old currency
+     */
     public String getCurrency(){
         return currency;
     }
 
-    //getter for new amount
+    /**
+     * The get method that returns the new converted amount.
+     * @return The converted amount
+     */
     public String getNewAmount(){ return newAmount; }
 
-    //getter for new currency
+    /**
+     * The get method that returns the new currency.
+     * @return The currency to convert into
+     */
     public String getNewCurrency(){ return newCurrency; }
 }

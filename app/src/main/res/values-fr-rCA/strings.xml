@@ -16,5 +16,12 @@
     <string name="new_c">Nouvelle devise:</string>
     <string name="enter_here">Entrez ici..</string>
     <string name="convert">Échange</string>
+    <string name="title">Mode D\'Emplois:</string>
+    <string name="understand">Ouis, je comprend</string>
+    <string name="delete">Enlever</string>
+    <string name="newest">Nouveau</string>
+
+
+
 
 </resources>

@@ -14,4 +14,7 @@ public class ResultsModel extends ViewModel {
     public String newCurrency;
     public String newAmount;
 
+    public MutableLiveData<Result> selectedResult = new MutableLiveData< >();
+
+
 }
