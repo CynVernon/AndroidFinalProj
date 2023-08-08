@@ -1,0 +1,30 @@
+<!-- item_bear_image.xml -->
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="bearImage"
+            type="algonquin.cst2335.androidfinalproj.bearimages.BearImageDatabase" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- TextView to display image size -->
+        <TextView
+            android:id="@+id/tvImageSize"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{`Image Size: ` + bearImage.width + `x` + bearImage.height}" />
+
+        <!-- ImageView to display the image (you can add this if needed) -->
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@{bearImage.imageUrl}" />
+    </LinearLayout>
+</layout>
