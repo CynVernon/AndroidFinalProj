@@ -141,16 +141,12 @@ public class AviationActivity extends AppCompatActivity {
 
             @Override
             public void onBindViewHolder(@NonNull MyRowHolder holder, int position) {
-                holder.destination.setText("");
-                holder.terminal.setText("");
-                holder.gate.setText("");
-                holder.delay.setText("");
+                Flight flight = flights.get(position);
 
-                Flight object = flights.get(position);
-                holder.destination.setText(object.getDestination());
-                holder.terminal.setText(object.getTerminal());
-                holder.gate.setText(object.getGate());
-                holder.delay.setText(object.getDelay());
+                holder.destination.setText(flight.getDestination());
+                holder.terminal.setText(flight.getTerminal());
+                holder.gate.setText(flight.getGate());
+                holder.delay.setText(flight.getDelay());
             }
 
             @Override

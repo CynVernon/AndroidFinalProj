@@ -60,4 +60,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/triviaBtn"
         app:layout_constraintVertical_bias="0.008" />
+
+    <Button
+        android:id="@+id/aviationBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="56dp"
+        android:text="@string/aviation_tracker"
+        app:layout_constraintEnd_toEndOf="@+id/bearBtn"
+        app:layout_constraintStart_toStartOf="@+id/bearBtn"
+        app:layout_constraintTop_toBottomOf="@+id/bearBtn" />
 </androidx.constraintlayout.widget.ConstraintLayout>
