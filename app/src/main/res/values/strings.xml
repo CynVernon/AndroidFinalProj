@@ -20,4 +20,12 @@
     <string name="delete">Delete</string>
     <string name="newest">Newest</string>
 
+    <string name="destination">Destination:\ </string>
+    <string name="terminal">Terminal:\ </string>
+    <string name="delay">Delay:\ </string>
+    <string name="gate">Gate:\ </string>
+    <string name="search">Search</string>
+    <string name="airport_code">Airport code</string>
+    <string name="no_delay">No delay</string>
+
 </resources>

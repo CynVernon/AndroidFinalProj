@@ -99,11 +99,19 @@ public class AviationActivity extends AppCompatActivity {
                             String gate = arrival.getString("gate");
                             int delayMinutes = arrival.optInt("delay", 0);
 
+                            if (terminal.equals("null")) {
+                                terminal = "N/A";
+                            }
+
+                            if (gate.equals("null")) {
+                                gate = "N/A";
+                            }
+
                             String delayString;
                             if (delayMinutes > 0) {
                                 delayString = delayMinutes + " minutes";
                             } else {
-                                delayString = "No delay";
+                                delayString = getString(R.string.no_delay);
                             }
                             Flight flight = new Flight(destinationAirport, terminal, gate, delayString);
                             //TODO: make sure data doesn't duplicate.
@@ -147,10 +155,10 @@ public class AviationActivity extends AppCompatActivity {
             public void onBindViewHolder(@NonNull MyRowHolder holder, int position) {
                 Flight flight = flights.get(position);
 
-                holder.destination.setText(flight.getDestination());
-                holder.terminal.setText(flight.getTerminal());
-                holder.gate.setText(flight.getGate());
-                holder.delay.setText(flight.getDelay());
+                holder.destination.setText(getString(R.string.destination) + flight.getDestination());
+                holder.terminal.setText(getString(R.string.terminal) + flight.getTerminal());
+                holder.gate.setText(getString(R.string.gate) + flight.getGate());
+                holder.delay.setText(getString(R.string.delay) + flight.getDelay());
             }
 
             @Override
@@ -188,11 +196,19 @@ public class AviationActivity extends AppCompatActivity {
             gate = itemView.findViewById(R.id.gate);
             delay = itemView.findViewById(R.id.delay);
 
+            //Code to view details of the fragment.
             itemView.setOnClickListener(clk -> {
+                int position = getAbsoluteAdapterPosition();
+                Flight selected = flights.get(position);
+                model.selectedFlight.postValue(selected);
+            });
+
+            //Code to delete an entry
+            itemView.setOnLongClickListener(clk -> {
                 int position = getAbsoluteAdapterPosition();
                 AlertDialog.Builder builder = new AlertDialog.Builder(AviationActivity.this);
                 builder.setTitle("Warning!")
-                        .setMessage("Are you sure you wish to delete this: " + destination.getText() + "?")
+                        .setMessage("Are you sure you wish to delete " + destination.getText() + "?")
                         .setNegativeButton("No", (dialog, cl) -> {
                         })
                         .setPositiveButton("Yes", (dialog, cl) -> {
@@ -201,7 +217,7 @@ public class AviationActivity extends AppCompatActivity {
                             thread.execute(() -> fDAO.deleteFlight(f));
                             flights.remove(position);
                             adapter.notifyItemRemoved(position);
-                            Snackbar.make(destination, "You deleted flight entry #" + position, Snackbar.LENGTH_LONG)
+                            Snackbar.make(destination, "You deleted flight entry #" + (position + 1), Snackbar.LENGTH_LONG)
                                     .setAction("Undo", click -> {
                                         flights.add(position, f);
                                         runOnUiThread(() -> adapter.notifyItemInserted(position));
@@ -209,6 +225,7 @@ public class AviationActivity extends AppCompatActivity {
                                     .show();
                         })
                         .create().show();
+                return false;
             });
         }
 

@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
 
+import algonquin.cst2335.androidfinalproj.R;
 import algonquin.cst2335.androidfinalproj.databinding.FlightRowBinding;
 
 public class FlightDetailsFragment extends Fragment {
@@ -21,10 +22,10 @@ public class FlightDetailsFragment extends Fragment {
         super.onCreateView(inflater, container, savedInstanceState);
         FlightRowBinding binding = FlightRowBinding.inflate(inflater);
 
-        binding.destination.setText(selected.destination);
-        binding.terminal.setText(selected.terminal);
-        binding.gate.setText(selected.gate);
-        binding.delay.setText(selected.delay);
+        binding.destination.setText(getString(R.string.destination) + selected.destination);
+        binding.terminal.setText(getString(R.string.terminal) + selected.terminal);
+        binding.gate.setText(getString(R.string.gate) + selected.gate);
+        binding.delay.setText(getString(R.string.delay) + selected.delay);
 
         return binding.getRoot();
     }

@@ -1,9 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">AndroidFinalProj</string>
+    <string name="welcome">Bienvenue!</string>
+    <string name="ask">Que voudrais tu faire aujourd\'hui?</string>
     <string name="currency_converter">Échange de l\'argent</string>
     <string name="trivia_time">Jeu-questionnaire</string>
     <string name="bear_images">Images d\'ours</string>
     <string name="aviation_tracker">Traqueur d\'aviation</string>
     <string name="help">Aide</string>
+    <string name="history">Histoire</string>
+
+    <string name="c_instructions">Bienvenue au convertisseur d\'argent. Pour utiliser cette application, entrez un montant à échanger. Entrez l\'argent que vous convertissez. Aprez, Entrez l\'argent laquelle vous souhaitez convertir. Appuyez sur le bouton de conversion pour obtenir votre résultat. Appuyez sur le bouton \"histoire\" pour afficher vos résultats passés. </string>
+    <string name="enter_amount">Comptant:</string>
+    <string name="old_c">Monnaie:</string>
+    <string name="new_c">Nouveau monnaie:</string>
+    <string name="enter_here">Ecrire ici..</string>
+    <string name="convert">échange</string>
+    <string name="title">Comment utiliser</string>
+    <string name="understand">Oui, je comprends.</string>
+    <string name="delete">Supprimer</string>
+    <string name="newest">Récent</string>
+
+    <string name="destination">Destination:\ </string>
+    <string name="terminal">Terminale:\ </string>
+    <string name="delay">Retenir:\ </string>
+    <string name="gate">Porte:\ </string>
+    <string name="search">Searche</string>
+    <string name="airport_code">Code d\'aeroport</string>
+    <string name="no_delay">Pas en retard</string>
 </resources>
