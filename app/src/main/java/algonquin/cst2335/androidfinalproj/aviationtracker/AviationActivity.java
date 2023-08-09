@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.room.Room;
 
@@ -68,7 +69,7 @@ public class AviationActivity extends AppCompatActivity {
         //Database code; 9694046b348f410681e40e36750f3730 ef636c3084596897297efaffc637c25e
         queue = Volley.newRequestQueue(this);
         Executor thread = Executors.newSingleThreadExecutor();
-        String url= "http://api.aviationstack.com/v1/flights?access_key=9694046b348f410681e40e36750f3730&dep_iata=";
+        String url= "https://api.aviationstack.com/v1/flights?access_key=9694046b348f410681e40e36750f3730&dep_iata=";
         db = Room.databaseBuilder(getApplicationContext(), FlightDatabase.class, "Flight db").build();
         fDAO = db.fDAO();
 
@@ -109,10 +110,12 @@ public class AviationActivity extends AppCompatActivity {
                             flights.add(flight);
 
                         }
-                        adapter.notifyDataSetChanged();
+                        runOnUiThread(() -> {
+                            adapter.notifyDataSetChanged();
+                        });
                     } catch (JSONException e) {
                         e.printStackTrace();
-                        throw new RuntimeException();
+                        Toast.makeText(AviationActivity.this, "Error processing API response", Toast.LENGTH_SHORT).show();
                     }
                 }, (error) -> {
                     Toast.makeText(AviationActivity.this, "Api has crashed. Please try again in a minute.", Toast.LENGTH_SHORT).show();
@@ -130,6 +133,7 @@ public class AviationActivity extends AppCompatActivity {
                 binding.editText.setText("");
             }
         });
+        binding.recyclerView.setLayoutManager(new LinearLayoutManager(this));
         binding.recyclerView.setAdapter( adapter = new RecyclerView.Adapter<MyRowHolder>() {
             @NonNull
             @Override
