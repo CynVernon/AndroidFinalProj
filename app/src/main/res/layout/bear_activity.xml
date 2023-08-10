@@ -1,6 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context=".bearimages.BearActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <EditText
+        android:id="@+id/editWidth"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter image width"
+        android:inputType="number"
+        android:importantForAccessibility="yes"
+        android:contentDescription="Enter image width in pixels" />
+
+    <EditText
+        android:id="@+id/editHeight"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editWidth"
+        android:layout_marginTop="8dp"
+        android:hint="Enter image height"
+        android:inputType="number"
+        android:importantForAccessibility="yes"
+        android:contentDescription="Enter image height in pixels" />
+
+    <Button
+        android:id="@+id/generateImageBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editHeight"
+        android:layout_marginTop="16dp"
+        android:text="Generate and Save Image" />
+
+    <Button
+        android:id="@+id/showSavedImagesBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/generateImageBtn"
+        android:layout_marginTop="16dp"
+        android:text="Show Saved Images" />
+
+</RelativeLayout>

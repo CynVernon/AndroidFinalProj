@@ -18,6 +18,6 @@ public interface BearImageDao {
     @Delete
     void deleteBearImage(BearImageDatabase bearImage);
 
-    @Query("SELECT * FROM BearImage")
+    @Query("SELECT * FROM bearimage")
     LiveData<List<BearImageDatabase>> getAllBearImages();
 }
