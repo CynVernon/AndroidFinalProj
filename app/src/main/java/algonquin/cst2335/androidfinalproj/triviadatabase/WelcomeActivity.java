@@ -43,11 +43,12 @@ public class WelcomeActivity extends AppCompatActivity {
                 // Save the username using SharedPreferences
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.putString("username", username);
-                editor.apply();
 
                 // Start QuizActivity
                 Intent intent = new Intent(WelcomeActivity.this, QuizActivity.class);
                 intent.putExtra("numQuestions", numQuestions);
+                editor.apply();
+
                 startActivity(intent);
             }
         });
