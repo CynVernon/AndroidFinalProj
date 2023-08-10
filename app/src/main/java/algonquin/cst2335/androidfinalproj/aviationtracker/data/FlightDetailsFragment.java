@@ -22,10 +22,15 @@ public class FlightDetailsFragment extends Fragment {
         super.onCreateView(inflater, container, savedInstanceState);
         FlightRowBinding binding = FlightRowBinding.inflate(inflater);
 
+
+
+        binding.flightNumber.setText(getString(R.string.flight_number) + selected.getFlightNumber());
+        binding.date.setText(getString(R.string.date) + selected.getDate());
+        binding.airline.setText(getString(R.string.airline) + selected.getAirline());
         binding.destination.setText(getString(R.string.destination) + selected.destination);
-        binding.terminal.setText(getString(R.string.terminal) + selected.terminal);
-        binding.gate.setText(getString(R.string.gate) + selected.gate);
-        binding.delay.setText(getString(R.string.delay) + selected.delay);
+//        binding.terminal.setText(getString(R.string.terminal) + selected.terminal);
+//        binding.gate.setText(getString(R.string.gate) + selected.gate);
+//        binding.delay.setText(getString(R.string.delay) + selected.delay);
 
         return binding.getRoot();
     }

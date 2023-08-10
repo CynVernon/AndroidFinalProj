@@ -28,4 +28,8 @@
     <string name="search">Searche</string>
     <string name="airport_code">Code d\'aeroport</string>
     <string name="no_delay">Pas en retard</string>
+    <string name="flight_number" />
+    <string name="date">"Date: "</string>
+    <string name="airline">"Airline: "</string>
+    <string name="saved_flights">Saved Flights</string>
 </resources>

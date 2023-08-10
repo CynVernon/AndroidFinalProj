@@ -4,8 +4,31 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@color/blue"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="8dp"
+    android:layout_marginTop="16dp">
+
+    <TextView
+        android:id="@+id/flight_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Flight Number goes here"
+        android:layout_marginBottom="8dp"/>
+
+    <TextView
+        android:id="@+id/date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Date Goes Here"
+        android:layout_marginBottom="8dp"/>
+
+    <TextView
+        android:id="@+id/airline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Airline Goes Here"
+        android:layout_marginBottom="8dp"/>
 
     <TextView
         android:id="@+id/destination"
@@ -13,25 +36,5 @@
         android:layout_height="wrap_content"
         android:text="Destination goes here"
         android:layout_marginBottom="8dp"/>
-
-    <TextView
-        android:id="@+id/terminal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Terminal Goes Here"
-        android:layout_marginBottom="8dp"/>
-
-    <TextView
-        android:id="@+id/gate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Gate Goes Here"
-        android:layout_marginBottom="8dp"/>
-
-    <TextView
-        android:id="@+id/delay"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Delay Goes Here"/>
 
 </LinearLayout>

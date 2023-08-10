@@ -82,6 +82,7 @@ public class AviationActivity extends AppCompatActivity {
 
         //code for the search button
         binding.search.setOnClickListener(click -> {
+            flights.clear();
             String airportCode = binding.editText.getText().toString().toUpperCase();
             if (!validateCode(airportCode)) {
                 Toast.makeText(AviationActivity.this, "Invalid airport code: " + airportCode, Toast.LENGTH_SHORT).show();
@@ -99,6 +100,18 @@ public class AviationActivity extends AppCompatActivity {
                             String gate = arrival.getString("gate");
                             int delayMinutes = arrival.optInt("delay", 0);
 
+                            JSONObject f = position.getJSONObject("flight");
+                            int flightNumber = f.optInt("number", 0);
+
+                            String date = position.getString("flight_date");
+
+                            JSONObject airline = position.getJSONObject("airline");
+                            String airlineName = airline.getString("name");
+
+                            if (destinationAirport.equals("null")) {
+                                destinationAirport = "N/A";
+                            }
+
                             if (terminal.equals("null")) {
                                 terminal = "N/A";
                             }
@@ -107,14 +120,21 @@ public class AviationActivity extends AppCompatActivity {
                                 gate = "N/A";
                             }
 
+                            if (date.equals("null")) {
+                                date = "N/A";
+                            }
+
+                            if (airlineName.equals("null")) {
+                                airlineName = "N/A";
+                            }
+
                             String delayString;
                             if (delayMinutes > 0) {
                                 delayString = delayMinutes + " minutes";
                             } else {
                                 delayString = getString(R.string.no_delay);
                             }
-                            Flight flight = new Flight(destinationAirport, terminal, gate, delayString);
-                            //TODO: make sure data doesn't duplicate.
+                            Flight flight = new Flight(flightNumber, date, airlineName, destinationAirport, terminal, gate, delayString);
                             flights.add(flight);
 
                         }
@@ -141,6 +161,11 @@ public class AviationActivity extends AppCompatActivity {
                 binding.editText.setText("");
             }
         });
+
+        binding.loadSaved.setOnClickListener(clk -> {
+
+        });
+
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(this));
         binding.recyclerView.setAdapter( adapter = new RecyclerView.Adapter<MyRowHolder>() {
             @NonNull
@@ -155,10 +180,10 @@ public class AviationActivity extends AppCompatActivity {
             public void onBindViewHolder(@NonNull MyRowHolder holder, int position) {
                 Flight flight = flights.get(position);
 
+                holder.flightNumber.setText(getString(R.string.flight_number) + flight.getFlightNumber());
+                holder.date.setText(getString(R.string.date) + flight.getDate());
+                holder.airline.setText(getString(R.string.airline) + flight.getAirline());
                 holder.destination.setText(getString(R.string.destination) + flight.getDestination());
-                holder.terminal.setText(getString(R.string.terminal) + flight.getTerminal());
-                holder.gate.setText(getString(R.string.gate) + flight.getGate());
-                holder.delay.setText(getString(R.string.delay) + flight.getDelay());
             }
 
             @Override
@@ -183,24 +208,46 @@ public class AviationActivity extends AppCompatActivity {
     }
 
     class MyRowHolder extends RecyclerView.ViewHolder {
+        TextView flightNumber;
+        TextView date;
+        TextView airline;
         TextView destination;
-        TextView terminal;
-        TextView gate;
-        TextView delay;
         public MyRowHolder(View itemView) {
             super(itemView);
 
             //find the TextViews for terminal, destination, gate, and delay
+            flightNumber = itemView.findViewById(R.id.flight_number);
+            date = itemView.findViewById(R.id.date);
+            airline = itemView.findViewById(R.id.airline);
             destination = itemView.findViewById(R.id.destination);
-            terminal = itemView.findViewById(R.id.terminal);
-            gate = itemView.findViewById(R.id.gate);
-            delay = itemView.findViewById(R.id.delay);
 
             //Code to view details of the fragment.
             itemView.setOnClickListener(clk -> {
                 int position = getAbsoluteAdapterPosition();
                 Flight selected = flights.get(position);
                 model.selectedFlight.postValue(selected);
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(AviationActivity.this);
+                builder.setTitle("More Info")
+                        .setMessage(
+                                getString(R.string.destination) + selected.getDestination() + "\n" +
+                                getString(R.string.terminal) + selected.getTerminal() + "\n" +
+                                getString(R.string.gate) + selected.getGate() + "\n" +
+                                getString(R.string.delay) + selected.getDelay()
+                        )
+                        .setNegativeButton("Close", (dialog, cl) -> {
+                        })
+                        .setPositiveButton("Save", (dialog, cl) -> {
+                            Executor thread = Executors.newSingleThreadExecutor();
+                            f = flights.get(position);
+                            thread.execute(() -> fDAO.insertFlight(f));
+                            Snackbar.make(
+                                        flightNumber, "You saved flight  #" +
+                                        flightNumber.getText() + " to " + destination.getText(),
+                                        Snackbar.LENGTH_LONG)
+                                    .show();
+                        })
+                        .create().show();
             });
 
             //Code to delete an entry
@@ -208,7 +255,9 @@ public class AviationActivity extends AppCompatActivity {
                 int position = getAbsoluteAdapterPosition();
                 AlertDialog.Builder builder = new AlertDialog.Builder(AviationActivity.this);
                 builder.setTitle("Warning!")
-                        .setMessage("Are you sure you wish to delete " + destination.getText() + "?")
+                        .setMessage(
+                                "Are you sure you wish to delete flight " +
+                                flightNumber.getText() + " to " + destination.getText() + "?")
                         .setNegativeButton("No", (dialog, cl) -> {
                         })
                         .setPositiveButton("Yes", (dialog, cl) -> {

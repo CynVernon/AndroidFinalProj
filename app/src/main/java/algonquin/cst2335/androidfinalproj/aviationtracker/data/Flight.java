@@ -10,6 +10,16 @@ public class Flight {
     @ColumnInfo(name = "Id")
     protected int id;
 
+    @ColumnInfo(name = "Flight Number")
+    protected int flightNumber;
+
+    @ColumnInfo(name = "Date")
+    protected String date;
+
+    @ColumnInfo(name = "airline")
+    protected String airline;
+
+
     @ColumnInfo(name = "Destination")
     protected String destination;
 
@@ -25,7 +35,10 @@ public class Flight {
     public Flight() {
     }
 
-    public Flight(String des, String t, String g, String del) {
+    public Flight(int fn, String d, String a, String des, String t, String g, String del) {
+        flightNumber = fn;
+        date = d;
+        airline = a;
         destination = des;
         terminal = t;
         gate = g;
@@ -38,6 +51,30 @@ public class Flight {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public int getFlightNumber() {
+        return flightNumber;
+    }
+
+    public void setFlightNumber(int flightNumber) {
+        this.flightNumber = flightNumber;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public String getAirline() {
+        return airline;
+    }
+
+    public void setAirline(String airline) {
+        this.airline = airline;
     }
 
     public String getDestination() {

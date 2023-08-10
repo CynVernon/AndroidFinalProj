@@ -27,5 +27,9 @@
     <string name="search">Search</string>
     <string name="airport_code">Airport code</string>
     <string name="no_delay">No delay</string>
+    <string name="flight_number">Flight No:\ </string>
+    <string name="date">Date:\ </string>
+    <string name="airline">Airline:\ </string>
+    <string name="saved_flights">Saved Flights</string>
 
 </resources>
